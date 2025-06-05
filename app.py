@@ -9,15 +9,27 @@ df = pd.DataFrame(car_data)
 
 st.header('Vehículos en venta')
 
-hist_button = st.button('Crear Histograma')
+hist_check = st.checkbox('Crear Histograma')
+scat_check = st.checkbox('Crear un gráfico de dispersión')
 
-if hist_button:
+if hist_check:
     # escribe un mensaje
     st.write(
         'Creación de un histograma para el conjunto de datos de anuncios de venta de coches')
 
     # crea histograma
-    fig = px.histogram(car_data, x="odometer")
+    hist_fig = px.histogram(car_data, x="odometer")
 
     # Mostrar un gáfico Plotly interactivo
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(hist_fig, use_container_width=True)
+
+if scat_check:
+    # escribe un mensaje
+    st.write(
+        'Creación de un gráfico de dispersión del precio en relación al año del modelo')
+
+    # crea histograma
+    scat_fig = px.scatter(car_data, x="model_year", y="price")
+
+    # Mostrar un gáfico Plotly interactivo
+    st.plotly_chart(scat_fig, use_container_width=True)
