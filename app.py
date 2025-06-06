@@ -54,3 +54,19 @@ if price_odom_check:
 
     # Mostrar un gáfico Plotly interactivo
     st.plotly_chart(scat_pr_od, use_container_width=True)
+
+st.divider()
+
+st.header('Gáfico de Barras con comparativa de estado del vehículo y precio')
+
+bar_graph = st.button('Crear gráfico')
+
+if bar_graph:
+    # escribe un mensaje
+    st.write('Creando gráfico de barras, comparando precio y estado del vehículo')
+
+    # creación del gráfico
+    bar_pr_cond = px.bar(car_data, x='condition', y='price')
+
+    # Mostrar gráfico Plotly
+    st.plotly_chart(bar_pr_cond, use_container_width=True)
